@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Missions to Mars</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Bring in our bootstrap stylesheet -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+  </head>
+  
+<body style ="background-color: white;">
+
+  <div class="container">
+
+    <!--<div class="jumbotron text-center" >-->
+      <div class="jumbotron text-center" style="background-image: url(https://i.pinimg.com/originals/90/d9/24/90d9244c4454d098fe77533288e5d0e9.gif); height: 400px; background-position: center; background-size: cover;">
+      <h1 style = color:white;> Missions to Mars </h1>
+      <p><a class="btn btn-danger" href="/scrape" role="button"> Launch Mission! <br> Scrape Data </a></p>
+      </div>
+      <hr>
+      <br>
+    <div class="container">  
+      <div class="row">
+        <div class="col-sm-6 bg-light">
+
+          <h1><span class="badge badge-secondary"></span>
+            Mars News
+        </h1>
+        <strong><p>
+            {{mars_info.news_title}}
+        </p></strong>
+        <p>
+            {{mars_info.news_p}}
+        </p>
+        </div>
+        <div class="col-sm-6 bg-light" style ="background-color: #FF5733;">
+          <h1>
+            Mars Fact
+          </h1>
+          <table class="table table-success table-striped">
+          {{mars_info.mars_facts|safe}}
+        </table>
+        <br>  
+      </div>
+        <div class="col-lg-12 bg-light">
+          <br>
+          <h1 style="padding-top: 50px; text-align: center;">
+            Featured Image
+          </h1>
+          <a href={{mars_info.featured_image_url}}>
+            <img class="pix" src= {{mars_info.featured_image_url}} alt="Featured Image" width=100%>
+          </a>
+          </div>
+        <div class="row">
+        <div class = "col-sm-12 bg-light">
+          <hr>
+          <br>
+
+          <h1 style="padding-top: 50px; text-align: center;">Mars Hemispheres</h1>
+          <div class="card-deck">
+          <hr>
+          <div class="col-md-12">
+            <div class="row">
+          {% for hemis in mars_info.hemisphere_image_urls  %}
+            <div class="col-md-6">
+              <div class="card text-white bg-danger" style="margin: 30px;">
+              <div class="card-body">
+               <h4>
+                {{hemis.title}}
+                </h4>
+              <a href={{ hemis.hemisphere_image_urls }}>
+          <img class="card-img-top"src={{hemis.hemisphere_image_urls}} alt={{hemis.title}} href={{hemis.hemisphere_image_urls}} />
+              </a>
+            </div>
+          </div>
+          </div>
+          {% endfor %}
+      </div>
+      </div>
+    </div>
+
+</body>
+
+</html>
+
